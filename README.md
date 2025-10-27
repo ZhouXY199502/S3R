@@ -11,24 +11,27 @@ Spatially smooth and high dimensional regression
 
 ## 🔍 Overview
 
-S3R integrates **sparsity**, **smoothness**, and **spatial regularization** to learn interpretable coefficient matrices that vary smoothly across spatial locations.
+**S3R (Spatially Smooth Sparse Regression)** is a spatially regularized regression framework that learns **interpretable, spatially varying coefficients** from high-dimensional biological or spatial omics data.
 
-It supports two complementary regularization modes:
+It integrates three key principles:
 
-- **L-mode** — Laplacian-based smoothing using spatial adjacency.
-- **H-mode** — Total Variation (TV) smoothing using graph edge structure.
+1. **Data fidelity** — ensures accurate reconstruction of observed responses.  
+2. **Spatial smoothness** — enforces local consistency across neighboring spatial locations.  
+3. **Sparsity and group regularization** — selects a compact, biologically meaningful set of features while maintaining interpretability.
 
-Mathematically, the model minimizes:
+The model optimizes a composite loss function that balances these components:
 
-\[
-\mathcal{L}(W) = \|Y - XW\|_2^2 + \lambda \|LW\|_1 + \alpha \|W\|_1 + \beta \|W\|_{2,1}
-\]
+<img width="547" height="80" alt="image" src="https://github.com/user-attachments/assets/2439c033-08da-4610-b3bf-e11854d35474" />
 
-where:
+
+where  
 - \( X \): feature matrix (samples × features)  
-- \( Y \): target variable (samples × 1)  
-- \( L \): normalized Laplacian or edge-incidence matrix  
-- \( W \): coefficient matrix (spatially varying regression weights)
+- \( Y \): response variable (samples × 1)  
+- \( L \): spatial structure matrix (e.g., Laplacian or incidence)  
+- \( W \): coefficient matrix representing spatially varying regression weights  
+
+This formulation allows S3R to uncover **spatially coherent feature–response relationships**, identify **region-specific drivers**, and preserve **interpretability** across complex spatial domains.  
+It can be applied to **spatial transcriptomics**, **histology-aligned omics**, or other **spatially indexed regression problems**.
 
 ---
 
@@ -102,9 +105,9 @@ If `train_result=None`, you must manually specify `lambda_smooth`, `alpha`, and 
 
 | File                          | Description                           |
 | ----------------------------- | ------------------------------------- |
-| `*_##noknockoff_BT_LNORM.csv` | Estimated coefficient matrix (L-mode) |
-| `*_##noknockoff_BT_HTV.csv`   | Estimated coefficient matrix (H-mode) |
-| `*_##noknockoff_BT.png`       | Corresponding coefficient heatmap     |
+| `*_##result_BT_LNORM.csv` | Estimated coefficient matrix (L-mode) |
+| `*_##result_BT_HTV.csv`   | Estimated coefficient matrix (H-mode) |
+| `*_##result_BT.png`       | Corresponding coefficient heatmap     |
 | `slurm-<jobid>.out`           | HPC job output log                    |
 
 ---
@@ -156,30 +159,13 @@ sbatch run_s3r_exp.sh
 
 If you use S3R in your research, please cite:
 
-> Zhou, X., Cao, S., Zhang, C.
-> *Spatially Smooth Sparse Regression for High-Dimensional Spatial Transcriptomics.*
-> (Manuscript in preparation)
+> Zhou, X., Dang, P., Tang, H., Peng, L. X., Yeh, J. J., Sears, R. C., ... & Cao, S. (2025). S3R: Spatially Smooth and Sparse Regression Reveals High-Dimensional Regulatory Networks in Spatial Transcriptomics. bioRxiv, 2025-09.
+
+
 
 ---
-
-## 📁 Example Output Preview
-
-<p align="center">
-  <img src="examples/example_heatmap.png" width="500"/>
-</p>
-
----
-
-## ✨ License
-
-This project is distributed under the MIT License.
 
 ```
 
----
 
-是否希望我帮你继续写一个小节  
-👉 “**Example Usage with Real Data (Breast Cancer Spatial Dataset)**”  
-用于展示一段真实路径 `/N/slate/zhou19/real_saptial/github/` 下的数据运行示例？  
-这在 GitHub 页面上会让你的项目看起来更完整。
 ```
