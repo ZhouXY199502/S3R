@@ -21,14 +21,15 @@ It integrates three key principles:
 
 The model optimizes a composite loss function that balances these components:
 
-<img width="547" height="80" alt="image" src="https://github.com/user-attachments/assets/2439c033-08da-4610-b3bf-e11854d35474" />
-
+<p align="center">
+  <img src="./s3r_loss.png" width="550">
+</p>
 
 where  
-- \( X \): feature matrix (samples × features)  
-- \( Y \): response variable (samples × 1)  
-- \( L \): spatial structure matrix (e.g., Laplacian or incidence)  
-- \( W \): coefficient matrix representing spatially varying regression weights  
+- **X**: feature matrix (samples × features)  
+- **Y**: response variable (samples × 1)  
+- **L**: spatial structure matrix (e.g., Laplacian or incidence)  
+- **W**: coefficient matrix representing spatially varying regression weights  
 
 This formulation allows S3R to uncover **spatially coherent feature–response relationships**, identify **region-specific drivers**, and preserve **interpretability** across complex spatial domains.  
 It can be applied to **spatial transcriptomics**, **histology-aligned omics**, or other **spatially indexed regression problems**.
