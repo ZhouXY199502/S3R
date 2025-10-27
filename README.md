@@ -20,11 +20,12 @@ It integrates three key principles:
 3. **Sparsity and group regularization** — selects a compact, biologically meaningful set of features while maintaining interpretability.
 
 The model optimizes a composite loss function that balances these components:
-
+````
 <p align="center">
   <img src="s3r_loss.png" width="550">
 </p>
 
+````markdown
 where  
 - **X**: feature matrix (samples × features)  
 - **Y**: response variable (samples × 1)  
@@ -128,7 +129,7 @@ If `train_result=None`, you must manually specify `lambda_smooth`, `alpha`, and 
 #SBATCH --time=42:00:00
 #SBATCH --mem=48G
 #SBATCH --output=slurm-%j.out
-#SBATCH -A r00077
+
 
 module load python
 cd /N/slate/zhou19/real_saptial/github/
