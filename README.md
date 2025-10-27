@@ -22,7 +22,7 @@ It integrates three key principles:
 The model optimizes a composite loss function that balances these components:
 
 <p align="center">
-  <img src="./s3r_loss.png" width="550">
+  <img src="s3r_loss.png" width="550">
 </p>
 
 where  
